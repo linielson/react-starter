@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+import { addUsers } from './actions/users';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import Header from './components/Header';
+import UsersList from './components/UsersList';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    componentDidMount() {
+        axios.get('http://localhost:3000/users')
+            .then(response => {
+                console.log(response.data);
+                store.dispatch(addUsers(response.data.results));
+            })
+    }
+    render() {
+      return (
+        <Provider store={store}>
+          <div className="main-section">
+              <Header />
+              <UsersList />
+          </div>
+        </Provider>
+      )
+    }
 }
+
 
 export default App;
