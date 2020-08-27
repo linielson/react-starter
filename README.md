@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This APP was created from the tutorial https://medium.com/javascript-in-plain-english/build-an-amazing-application-using-react-and-nodejs-together-fad13ab7b49c
+
 ## Available Scripts
 
 In the project directory, you can run:
